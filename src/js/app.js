@@ -1,32 +1,20 @@
+
 import {Observable} from 'rxjs/Rx';
+import '../css/style.css';
 
-//now an object
-let counter = {value: 0};
+const canvas = document.getElementById('stopwatch-canvas');
+const digital = document.getElementById('digital');
 
-//functions that increment, decrement and reset the counter 
-const inc = acc => ({value: acc.value + 1});
-const dec = acc => ({value: acc.value - 1});
-const res = acc => ({value: 0});
 
-const display = document.getElementById('display');
-const incButton = document.getElementById('increment');
-const decButton = document.getElementById('decrement');
-const resButton = document.getElementById('reset');
 
-//observe events on the buttons
-//getting and observable from click events related to Buttons
-//merge can take a merge of existing streams
-//scan is operating on all the buttons
+//if canvas is supported
+if (canvas.getContext){
 
-// mapto maps the click events to each of the functions specified in mapTo(X)
-const button$ = Observable.merge(
-	Observable.fromEvent(incButton, 'click').mapTo(inc),
-	Observable.fromEvent(decButton, 'click').mapTo(dec),
-	Observable.fromEvent(resButton, 'click').mapTo(res)
-)
+	//need to access the rendering context and draw on it
+	//call method getContext with param 2d
+	const ctx = canvas.getContext('2d');
+} else{
+	//not supported in browser
+}
 
-button$
-	.scan((acc, update) => update(acc), counter)
-	.subscribe(counter => {
-	display.innerHTML = counter.value;
-});
+

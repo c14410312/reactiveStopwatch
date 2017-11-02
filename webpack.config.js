@@ -4,6 +4,7 @@ const path = require('path');
 
 //html webpack plugin --> easier to bundle HTML files
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 //COnstant with our paths
 const paths = {
@@ -27,6 +28,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.join(paths.SRC, 'index.html'),
 		}),
+		new ExtractTextPlugin('style.bundle.css'),
 	],
 
 	//we are telling babel to use "babel-loader" for.js and .jsx files
@@ -39,6 +41,12 @@ module.exports = {
 			       		'babel-loader',
 			       ],
 			},
+			{
+        		test: /\.css$/,
+        		loader: ExtractTextPlugin.extract({
+          			use: 'css-loader',
+        		}),
+      		}
 		],
 	},
 

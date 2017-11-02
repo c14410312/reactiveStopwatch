@@ -4,13 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
 
-    <title>Webpack Babel React revisited</title>
+    <title>Reactive Stopwatch</title>
   </head>
   <body>
-  	<section id="display">0</section>
-		
-	<button id="increment">increment</button>
-	<button id="decrement">decrement</button>
-	<button id="reset">reset</button>
+    <canvas id ="stopwatch-canvas" width="200" height="200"></canvas>
+    <section id='stopwatch-container'>
+      <section id="digital">00:00:00</section>
+      <section class="flex-container">
+        <button class="flex-item">start</button>
+        <button class="flex-item">stop</button>
+        <button class="flex-item">reset</button>
+        <button class="flex-item">split</button>
+      </section>
+    </section>
   </body>
 </html>
