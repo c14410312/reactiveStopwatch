@@ -31,7 +31,18 @@ button {
   font-family: Verdana;
   text-align: center;
 }
-
 #split-container{
   text-align: center;
+}
+#stopwatch-canvas{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+h1{
+  text-align: center;
+}
+canvas{
+  display: block;
 }
